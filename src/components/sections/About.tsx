@@ -6,7 +6,7 @@ import profileImage from '../../assets/img/Image_op8c3vop8c3vop8c.webp';
 
 const About = () => {
   return (
-    <section id="about" className="section py-20 md:py-32 bg-[#0a0a0f]">
+    <section className="section py-20 md:py-32 bg-[#0a0a0f]">
       <div className="container mx-auto px-4">
         <ScrollReveal>
           <div className="text-center mb-16">
@@ -70,7 +70,7 @@ const About = () => {
 
         {/* About Description - Two Column Layout */}
         <ScrollReveal delay={0.6}>
-          <div className="max-w-6xl mx-auto mt-20 p-8 md:p-12 rounded-2xl glass border border-white/10">
+          <div className="max-w-6xl mx-auto mt-20 p-8 md:p-12 rounded-2xl glass border border-white/10" id="about">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center md:text-left">
               Más sobre mí
             </h3>

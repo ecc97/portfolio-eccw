@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import profileImage from '../../assets/img/Image_jqu8ejqu8ejqu8ejaza.webp';
+import { useMagneticButton } from '../../hooks/useMagneticButton';
 
 const Hero = () => {
+  const magneticRef = useMagneticButton<HTMLAnchorElement>(0.5);
+
   const scrollToAbout = () => {
     const element = document.querySelector('#about');
     if (element) {
@@ -167,13 +170,14 @@ const Hero = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
             <motion.a
+              ref={magneticRef}
               href="#projects"
               onClick={(e) => {
                 e.preventDefault();
                 const element = document.querySelector('#projects');
                 element?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] transition-all duration-300"
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

@@ -135,6 +135,10 @@ a {
   position: relative;
 }
 
+#about {
+  scroll-margin-top: 80px;
+}
+
 @media (max-width: 768px) {
   .section {
     padding: 4rem 0;
