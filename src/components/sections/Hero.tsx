@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, Download } from 'lucide-react';
 import profileImage from '../../assets/img/Image_jqu8ejqu8ejqu8ejaza.webp';
 import { useMagneticButton } from '../../hooks/useMagneticButton';
 
@@ -156,7 +156,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-gray-400 mb-6 sm:mb-12 max-w-3xl mx-auto leading-relaxed"
           >
             Transformo ideas en experiencias web modernas e interactivas, interfaces
             claras, funcionales y centradas en el usuario con tecnologías de vanguardia.
@@ -167,10 +167,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            className="flex flex-wrap sm:flex-row items-center justify-center gap-4 mb-8 sm:mb-16"
           >
             <motion.a
-              ref={magneticRef}
               href="#projects"
               onClick={(e) => {
                 e.preventDefault();
@@ -195,6 +194,26 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               Contactar
+            </motion.a>
+            
+            {/* CV Download Button */}
+            <motion.a
+              href="/cv.pdf"
+              download
+              className="px-8 py-4 bg-gradient-to-r from-red-900 to-red-700 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(127,29,29,0.5)] transition-all duration-300 flex items-center gap-2 group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              // initial={{ opacity: 0, y: 30 }}
+              // animate={{ opacity: 1, y: 0 }}
+              // transition={{ duration: 0.8, delay: 0.9 }}
+            >
+              <motion.span
+                animate={{ y: [0, 4, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <Download size={20} />
+              </motion.span>
+              <span>Descargar CV</span>
             </motion.a>
           </motion.div>
 
