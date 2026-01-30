@@ -49,7 +49,7 @@ const Skills: React.FC = () => {
                             <span className="text-gradient">Habilidades</span>
                         </h2>
                         <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                            Tecnologías y herramientas que domino para crear soluciones web modernas
+                            Tecnologías y herramientas que manejo para crear soluciones web modernas
                         </p>
                     </div>
                 </ScrollReveal>

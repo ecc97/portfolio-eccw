@@ -1,23 +1,73 @@
+---
+interface LayoutIndexProps {
+  title: string;
+  description: string;
+}
+
+const { title, description = "Portafolio - Edwin Carmona" } = Astro.props as LayoutIndexProps;
+
+import Loader from '../components/shared/Loader';
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- <Loader client:only/> -->
+    <div class="cursor"></div>
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #2563eb;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease;
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
 </style>
+
+<script>
+  const cursor = document.querySelector(".cursor") as HTMLElement;
+
+  document.addEventListener("mousemove", (e) => {
+    if (cursor) {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    }
+  });
+
+  document.addEventListener("mousedown", () => {
+    cursor?.classList.add("clicked");
+  });
+
+  document.addEventListener("mouseup", () => {
+    cursor?.classList.remove("clicked");
+  });
+</script>

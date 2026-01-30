@@ -227,7 +227,7 @@ const Hero = () => {
             {[
               { Icon: Github, href: '#', label: 'GitHub' },
               { Icon: Linkedin, href: '#', label: 'LinkedIn' },
-              { Icon: Mail, href: 'mailto:edwin@example.com', label: 'Email' }
+              { Icon: Mail, href: 'mailto:ecc9703@gmail.com', label: 'Email' }
             ].map(({ Icon, href, label }) => (
               <motion.a
                 key={label}

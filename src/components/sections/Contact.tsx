@@ -69,13 +69,13 @@ const Contact = () => {
                                     {
                                         icon: Mail,
                                         label: 'Email',
-                                        value: 'edwin@example.com',
-                                        href: 'mailto:edwin@example.com'
+                                        value: 'ecc9703@gmail.com',
+                                        href: 'mailto:ecc9703@gmail.com'
                                     },
                                     {
                                         icon: MapPin,
                                         label: 'Ubicaci\u00f3n',
-                                        value: 'Disponible para trabajo remoto',
+                                        value: 'Colombia, Medellín - Disponible para trabajo remoto',
                                         href: null
                                     }
                                 ].map((item) => {

@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectsGrid from '../components/sections/ProjectsGrid';
+
+import '../styles/global.css';
+---
+
+<Layout title="Proyectos" description="Proyectos en los que he trabajado">
+	<ProjectsGrid client:load />
+</Layout>
