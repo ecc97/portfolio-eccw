@@ -2,9 +2,11 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail, Download } from 'lucide-react';
 import profileImage from '../../assets/img/Image_jqu8ejqu8ejqu8ejaza.webp';
 import { useMagneticButton } from '../../hooks/useMagneticButton';
+import { useFloatingParticles } from '../../hooks/useFloatingParticles';
 
 const Hero = () => {
   const magneticRef = useMagneticButton<HTMLAnchorElement>(0.5);
+  const particles = useFloatingParticles(20);
 
   const scrollToAbout = () => {
     const element = document.querySelector('#about');
@@ -25,21 +27,21 @@ const Hero = () => {
 
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {particles.map((particle) => (
           <motion.div
-            key={i}
+            key={particle.id}
             className="absolute w-2 h-2 bg-cyan-500 rounded-full"
             initial={{
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1280),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
-              opacity: Math.random() * 0.5 + 0.2
+              x: particle.initialX,
+              y: particle.initialY,
+              opacity: particle.initialOpacity
             }}
             animate={{
-              y: [null, Math.random() * -200 - 100],
+              y: [null, particle.animateY],
               opacity: [null, 0]
             }}
             transition={{
-              duration: Math.random() * 3 + 2,
+              duration: particle.duration,
               repeat: Infinity,
               ease: 'linear'
             }}
@@ -198,8 +200,10 @@ const Hero = () => {
             
             {/* CV Download Button */}
             <motion.a
-              href="/cv.pdf"
+              href="https://ia600207.us.archive.org/13/items/edwin-carmona-cifuentes-desarrollador-frontend-hv-naf-0bv_202601/EdwinCarmonaCifuentes_DesarrolladorFrontendHV_naf0bv.pdf"
               download
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 bg-gradient-to-r from-red-900 to-red-700 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(127,29,29,0.5)] transition-all duration-300 flex items-center gap-2 group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
