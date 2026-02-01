@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import ScrollReveal from '../scroll/ScrollReveal';
 import { Mail, MapPin, Send } from 'lucide-react';
 import { useToast } from '../../hooks/useToasts';
+import { actions } from 'astro:actions';
 
 const Contact = () => {
     const { toast } = useToast();
@@ -17,15 +18,23 @@ const Contact = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulate API call
-        setTimeout(() => {
+        const { data, error } = await actions.send(formData);
+
+        if (!error) {
             toast({
                 title: '¡Mensaje enviado!',
                 description: 'Gracias por contactarme. Te responderé pronto.',
             });
             setFormData({ name: '', email: '', message: '' });
-            setIsSubmitting(false);
-        }, 1500);
+        } else {
+            toast({
+                title: 'Error al enviar',
+                description: error.message || 'Hubo un problema, intenta de nuevo.',
+            });
+            console.error(error);
+        }
+        
+        setIsSubmitting(false);
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

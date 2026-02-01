@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { API_URL } from 'astro:env/client';
 
 export interface Project {
   id: string;
@@ -20,7 +21,7 @@ export const useProjects = () => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:3002/api/projects');
+        const response = await fetch(`${API_URL}/projects`);
         
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);

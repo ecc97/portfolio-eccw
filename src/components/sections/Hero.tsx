@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail, Download } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, FileUser } from 'lucide-react';
 import profileImage from '../../assets/img/Image_jqu8ejqu8ejqu8ejaza.webp';
 import { useMagneticButton } from '../../hooks/useMagneticButton';
 import { useFloatingParticles } from '../../hooks/useFloatingParticles';
@@ -200,8 +200,7 @@ const Hero = () => {
             
             {/* CV Download Button */}
             <motion.a
-              href="https://ia600207.us.archive.org/13/items/edwin-carmona-cifuentes-desarrollador-frontend-hv-naf-0bv_202601/EdwinCarmonaCifuentes_DesarrolladorFrontendHV_naf0bv.pdf"
-              download
+              href="https://drive.google.com/drive/folders/12sTHxAVEarP94cTN2pZCEBQz67hboAka?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 bg-gradient-to-r from-red-900 to-red-700 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(127,29,29,0.5)] transition-all duration-300 flex items-center gap-2 group"
@@ -215,9 +214,9 @@ const Hero = () => {
                 animate={{ y: [0, 4, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <Download size={20} />
+                <FileUser size={20} />
               </motion.span>
-              <span>Descargar CV</span>
+              <span>Hoja de Vida (CV)</span>
             </motion.a>
           </motion.div>
 
