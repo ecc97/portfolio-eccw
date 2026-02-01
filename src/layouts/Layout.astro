@@ -1,10 +1,17 @@
 ---
 interface LayoutIndexProps {
   title: string;
-  description: string;
+  description?: string;
+  image?: string;
+  url?: string;
 }
 
-const { title, description = "Portafolio - Edwin Carmona" } = Astro.props as LayoutIndexProps;
+const { 
+  title, 
+  description = "Portafolio de Edwin Carmona - Desarrollador Frontend especializado en React, Astro y tecnologías modernas",
+  image = "/og-image.png",
+  url = "https://edwincarmona.com"
+} = Astro.props as LayoutIndexProps;
 
 import Loader from '../components/shared/Loader';
 ---
@@ -13,11 +20,41 @@ import Loader from '../components/shared/Loader';
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="theme-color" content="#0a0a0f" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="language" content="es" />
+    <meta name="author" content="Edwin Carmona" />
+    <meta name="keywords" content="desarrollador frontend, React, Astro, JavaScript, TypeScript, web development" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="Edwin Carmona" />
+    <meta property="og:locale" content="es_ES" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={url} />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
     <title>{title}</title>
   </head>
   <body>

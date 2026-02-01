@@ -8,13 +8,19 @@ import Projects from '../components/sections/Projects';
 import Skills from '../components/sections/Skills';
 import Contact from '../components/sections/Contact';
 import Footer from '../components/shared/Footer';
+import { Toaster } from '../components/shared/Toast';
 
 import '../styles/global.css';
+
+const title = "Edwin Carmona | Desarrollador Frontend";
+const description = "Portafolio de Edwin Carmona - Desarrollador Frontend especializado en React, Astro y tecnologías modernas. Transformo ideas en experiencias web interactivas.";
+const url = "https://edwincarmona.com";
 ---
 
-<Layout title="ECC97 | Portfolio">
+<Layout title={title} description={description} url={url}>
 	<ScrollProgress client:load />
 	<Navigation client:load />
+	<Toaster client:load />
 	<main>
 		<Hero client:load />
 		<About client:load />
