@@ -3,24 +3,23 @@ import { motion } from 'framer-motion';
 import ScrollReveal from '../scroll/ScrollReveal';
 import { Mail, MapPin, Send } from 'lucide-react';
 import { useToast } from '../../hooks/useToasts';
-import { actions } from 'astro:actions';
+import { useEmailJS } from '../../hooks/useEmailJS';
 
 const Contact = () => {
     const { toast } = useToast();
+    const { sendEmail, isSubmitting } = useEmailJS();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         message: ''
     });
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setIsSubmitting(true);
 
-        const { data, error } = await actions.send(formData);
+        const result = await sendEmail(formData);
 
-        if (!error) {
+        if (result.success) {
             toast({
                 title: '¡Mensaje enviado!',
                 description: 'Gracias por contactarme. Te responderé pronto.',
@@ -29,12 +28,9 @@ const Contact = () => {
         } else {
             toast({
                 title: 'Error al enviar',
-                description: error.message || 'Hubo un problema, intenta de nuevo.',
+                description: 'Hubo un problema con el servicio de correo.',
             });
-            console.error(error);
         }
-        
-        setIsSubmitting(false);
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

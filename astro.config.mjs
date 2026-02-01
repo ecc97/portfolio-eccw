@@ -1,6 +1,5 @@
 // @ts-check
 import { defineConfig, envField } from 'astro/config';
-import node from '@astrojs/node';
 
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
@@ -8,14 +7,13 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), tailwind()],
-  output: 'server',
-  adapter: node({
-    mode: 'standalone',
-  }),
+  output: 'static',
   env: {
     schema: {
       API_URL: envField.string({ context: 'client', access: 'public' }),
-      RESEND_API_KEY: envField.string({ context: 'client', access: 'public' }),
+      EMAILJS_SERVICE_ID: envField.string({ context: 'client', access: 'public' }),
+      EMAILJS_TEMPLATE_ID: envField.string({ context: 'client', access: 'public' }),
+      EMAILJS_PUBLIC_KEY: envField.string({ context: 'client', access: 'public' }),
     }
   }
 });
